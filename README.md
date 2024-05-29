@@ -22,7 +22,7 @@ Yes but it's not in Github yet. I'll upload it once iteration on the underlying 
 
 ## You're terrible at Verilog.
 
-That's not a question, but I agree completely. Feedback is welcome &#150; I'm always happy to learn! :)
+That's not a question, but I agree completely. Feedback is welcome – I'm always happy to learn! :)
 
 ## How is this code licensed?
 
