@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tf_cpu_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="registers" />
+            <top_module name="tf_cpu" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="77.164 ns"></ZoomEndTime>
+      <Cursor1Time time="56.350 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="248"></NameColumnWidth>
+      <ValueColumnWidth column_width="79"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="42" />
+   <wvobject fp_name="/tf_cpu/cpu/clock_100mhz" type="logic">
+      <obj_property name="ElementShortName">clock_100mhz</obj_property>
+      <obj_property name="ObjectShortName">clock_100mhz</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/clock" type="logic">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">clock</obj_property>
+      <obj_property name="ObjectShortName">clock</obj_property>
+      <obj_property name="label">CPU Clock</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/reset" type="logic">
+      <obj_property name="ElementShortName">reset</obj_property>
+      <obj_property name="ObjectShortName">reset</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/state" type="array">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">state[31:0]</obj_property>
+      <obj_property name="ObjectShortName">state[31:0]</obj_property>
+      <obj_property name="label">CPU State</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/memory_state" type="array">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">memory_state[31:0]</obj_property>
+      <obj_property name="ObjectShortName">memory_state[31:0]</obj_property>
+      <obj_property name="label">Memory State</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/cmd" type="array">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">cmd[31:0]</obj_property>
+      <obj_property name="ObjectShortName">cmd[31:0]</obj_property>
+      <obj_property name="label">CPU Command</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/registers[17]" type="array">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">[17][31:0]</obj_property>
+      <obj_property name="ObjectShortName">[17][31:0]</obj_property>
+      <obj_property name="label">PC</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/registers[0]" type="array">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">[0][31:0]</obj_property>
+      <obj_property name="ObjectShortName">[0][31:0]</obj_property>
+      <obj_property name="label">Register A</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/registers[1]" type="array">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">[1][31:0]</obj_property>
+      <obj_property name="ObjectShortName">[1][31:0]</obj_property>
+      <obj_property name="label">Register B</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/registers[2]" type="array">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">[2][31:0]</obj_property>
+      <obj_property name="ObjectShortName">[2][31:0]</obj_property>
+      <obj_property name="label">Register C</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/registers[3]" type="array">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">[3][31:0]</obj_property>
+      <obj_property name="ObjectShortName">[3][31:0]</obj_property>
+      <obj_property name="label">Register D</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/registers[19]" type="array">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">[19][31:0]</obj_property>
+      <obj_property name="ObjectShortName">[19][31:0]</obj_property>
+      <obj_property name="label">Register TMP</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/registers[20]" type="array">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">[20][31:0]</obj_property>
+      <obj_property name="ObjectShortName">[20][31:0]</obj_property>
+      <obj_property name="label">Register TMP 2</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/registers[21]" type="array">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">[21][31:0]</obj_property>
+      <obj_property name="ObjectShortName">[21][31:0]</obj_property>
+      <obj_property name="label">Register TMP 3</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/register_to_update" type="array">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">register_to_update[31:0]</obj_property>
+      <obj_property name="ObjectShortName">register_to_update[31:0]</obj_property>
+      <obj_property name="label">Register to Update</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/value_to_write" type="array">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">value_to_write[31:0]</obj_property>
+      <obj_property name="ObjectShortName">value_to_write[31:0]</obj_property>
+      <obj_property name="label">Value to Write</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/memory/address_in" type="array">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">address_in[31:0]</obj_property>
+      <obj_property name="ObjectShortName">address_in[31:0]</obj_property>
+      <obj_property name="label">Memory ADDR_IN</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/memory/data_in" type="array">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">data_in[31:0]</obj_property>
+      <obj_property name="ObjectShortName">data_in[31:0]</obj_property>
+      <obj_property name="label">Memory DATA_IN</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/memory/data_out" type="array">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">data_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">data_out[31:0]</obj_property>
+      <obj_property name="label">Memory DATA_OUT</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/memory/mode" type="logic">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">mode</obj_property>
+      <obj_property name="ObjectShortName">mode</obj_property>
+      <obj_property name="label">Memory Write?</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/memory/flipflops[280]" type="array">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">[280][31:0]</obj_property>
+      <obj_property name="ObjectShortName">[280][31:0]</obj_property>
+      <obj_property name="label">Target Cell</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/alu/a" type="array">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">a[31:0]</obj_property>
+      <obj_property name="ObjectShortName">a[31:0]</obj_property>
+      <obj_property name="label">ALU ARG 1</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/alu/b" type="array">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">b[31:0]</obj_property>
+      <obj_property name="ObjectShortName">b[31:0]</obj_property>
+      <obj_property name="label">ALU ARG 2</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/alu/out" type="array">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">out[31:0]</obj_property>
+      <obj_property name="label">ALU OUTPUT</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/increment" type="array">
+      <obj_property name="ElementShortName">increment[3:0]</obj_property>
+      <obj_property name="ObjectShortName">increment[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/load_arg" type="array">
+      <obj_property name="ElementShortName">load_arg[31:0]</obj_property>
+      <obj_property name="ObjectShortName">load_arg[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/load_final_value" type="array">
+      <obj_property name="ElementShortName">load_final_value[31:0]</obj_property>
+      <obj_property name="ObjectShortName">load_final_value[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/target_register_from_cmd" type="array">
+      <obj_property name="ElementShortName">target_register_from_cmd[31:0]</obj_property>
+      <obj_property name="ObjectShortName">target_register_from_cmd[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/source_register_from_cmd" type="array">
+      <obj_property name="ElementShortName">source_register_from_cmd[31:0]</obj_property>
+      <obj_property name="ObjectShortName">source_register_from_cmd[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/jump_controller/cmd" type="array">
+      <obj_property name="ElementShortName">cmd[31:0]</obj_property>
+      <obj_property name="ObjectShortName">cmd[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/jump_controller/jump_arg_1" type="array">
+      <obj_property name="ElementShortName">jump_arg_1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">jump_arg_1[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/jump_controller/jump_arg_2" type="array">
+      <obj_property name="ElementShortName">jump_arg_2[31:0]</obj_property>
+      <obj_property name="ObjectShortName">jump_arg_2[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/jump_controller/jump_dest_origin_register" type="array">
+      <obj_property name="ElementShortName">jump_dest_origin_register[31:0]</obj_property>
+      <obj_property name="ObjectShortName">jump_dest_origin_register[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/jump_controller/jump_arg_1_origin_register" type="array">
+      <obj_property name="ElementShortName">jump_arg_1_origin_register[31:0]</obj_property>
+      <obj_property name="ObjectShortName">jump_arg_1_origin_register[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/jump_controller/jump_arg_2_origin_register" type="array">
+      <obj_property name="ElementShortName">jump_arg_2_origin_register[31:0]</obj_property>
+      <obj_property name="ObjectShortName">jump_arg_2_origin_register[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/jump_controller/jump_dest_storage_register" type="array">
+      <obj_property name="ElementShortName">jump_dest_storage_register[31:0]</obj_property>
+      <obj_property name="ObjectShortName">jump_dest_storage_register[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/jump_controller/jump_arg_1_storage_register" type="array">
+      <obj_property name="ElementShortName">jump_arg_1_storage_register[31:0]</obj_property>
+      <obj_property name="ObjectShortName">jump_arg_1_storage_register[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/jump_controller/jump_arg_2_storage_register" type="array">
+      <obj_property name="ElementShortName">jump_arg_2_storage_register[31:0]</obj_property>
+      <obj_property name="ObjectShortName">jump_arg_2_storage_register[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/jump_controller/should_jump" type="logic">
+      <obj_property name="ElementShortName">should_jump</obj_property>
+      <obj_property name="ObjectShortName">should_jump</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/jump_controller/is_jump_op" type="logic">
+      <obj_property name="ElementShortName">is_jump_op</obj_property>
+      <obj_property name="ObjectShortName">is_jump_op</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/jump_controller/jump_type_sig" type="array">
+      <obj_property name="ElementShortName">jump_type_sig[2:0]</obj_property>
+      <obj_property name="ObjectShortName">jump_type_sig[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/jump_dest" type="array">
+      <obj_property name="ElementShortName">jump_dest[31:0]</obj_property>
+      <obj_property name="ObjectShortName">jump_dest[31:0]</obj_property>
+   </wvobject>
+</wave_config>
