@@ -2,7 +2,7 @@
 
 BitJam is a 32-bit CPU architecture, as well as a reference implementation in SystemVerilog.
 
-Bitjam offers a novel architecture, in which the minimum addressible unit is th 32-bit word 
+Bitjam offers a novel architecture, in which the minimum addressible unit is the 32-bit word 
 (rather than the byte, as is typical with most other CPUs), as well as a flexible and expressive
 set of operations, allowing for rapid assembly programming and easier bootstrapping of 
 programming languages on top of the base architecture.
