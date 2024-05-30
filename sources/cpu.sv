@@ -45,16 +45,17 @@ module cpu(
     register_e register_to_update;
     logic should_update_register;    
     logic [31:0] value_to_write;
-    logic [31:0] registers [register_to_update.last():register_to_update.first()];  // Skip none    
+    logic [31:0] registers [register_to_update.last():register_to_update.first()];  // Skip none        
     assign pc_out = registers[PC];
     assign reg_out = registers[9:0];
+    initial registers[PC] = 32'h50;
     
     // Initialise memory.
     logic [31:0] mem_addr;
     logic [31:0] mem_data_in;
     logic [31:0] mem_data_out;
     logic memory_mode;
-    memory #(.SIZE(300)) memory (
+    mmu mmu (
         .clock(clock),
         .address_in(mem_addr),
         .mode(memory_mode),
@@ -111,7 +112,7 @@ module cpu(
     // Hack to front-run storing of the command into the CMD register.
     // We save a clock cycle by looking directly at the output of the memory module if we know that it is equal to the
     // command to be stored.
-    assign cmd = (state == READ_CMD && memory_state == READ_MEM_VALUE__READ_MEM) ? mem_data_out : registers[CMD];            
+    assign cmd = registers[CMD];            
     assign cmd_out = cmd;
     
     // Force memory into read-only mode except when we're actually writing.    
@@ -277,7 +278,11 @@ module cpu(
             if (memory_state == READ_MEM_VALUE__SET_MEM_ADDR) begin
                 next_state = READ_CMD;
                 next_memory_state = READ_MEM_VALUE__READ_MEM;
-            end else if (memory_state == READ_MEM_VALUE__READ_MEM) begin                
+            end else if (memory_state == READ_MEM_VALUE__READ_MEM) begin
+                // We need a cycle for the memory output to propagate to the CMD register.           
+                next_state = READ_CMD;
+                next_memory_state = QUIESCE;
+            end else if (memory_state == QUIESCE) begin     
                 if (is_alu_op) begin
                     next_state = READ_ALU_ARG_1;
                     if (alu_arg_1_needs_literal) next_memory_state = READ_MEM_VALUE__SET_MEM_ADDR;
@@ -811,8 +816,8 @@ module cpu(
         if (reset) begin
             int i;
             for (i = 0; i < register_to_update.num(); i = i + 1) begin                
-                registers[register_e'(i)] <= 0;
-            end
+                registers[register_e'(i)] <= (i == PC) ? 32'h50 : 32'h0;
+            end            
         end else if (should_update_register) begin
             registers[register_to_update] <= value_to_write;
             registers[ALU_OUT] = alu_out_wire;
