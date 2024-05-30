@@ -28,16 +28,17 @@ package registers;
     } register_e;   
 endpackage
 
+import internal_state::*;
+import peripherals::*;
+import registers::*;
+
 module cpu(    
     input wire clock_100mhz,
     input wire reset,
-    output logic[31:0] pc_out,
-    output logic [31:0] reg_out[9:0],
-    output logic[31:0] cmd_out,
-    output logic [2:0] mem_state_out
-    );   
-    
-    import registers::*;   
+    input peripheral_status_bus_t peripheral_status_bus,
+    output internal_state_bus_t internal_state,
+    output peripheral_control_bus_t peripheral_control_bus
+    );              
         
     wire clock;
     assign clock = clock_100mhz;
@@ -45,9 +46,11 @@ module cpu(
     register_e register_to_update;
     logic should_update_register;    
     logic [31:0] value_to_write;
-    logic [31:0] registers [register_to_update.last():register_to_update.first()];  // Skip none        
-    assign pc_out = registers[PC];
-    assign reg_out = registers[9:0];
+    logic [31:0] registers [register_to_update.last():register_to_update.first()];  // Skip none      
+          
+    assign internal_state.pc = registers[PC];
+    assign internal_state.registers = registers[9:0];
+    
     initial registers[PC] = 32'h50;
     
     // Initialise memory.
@@ -113,7 +116,7 @@ module cpu(
     // We save a clock cycle by looking directly at the output of the memory module if we know that it is equal to the
     // command to be stored.
     assign cmd = registers[CMD];            
-    assign cmd_out = cmd;
+    assign internal_state.cmd = cmd;
     
     // Force memory into read-only mode except when we're actually writing.    
     assign memory_mode = (memory_state == WRITE_MEM_VALUE); 
