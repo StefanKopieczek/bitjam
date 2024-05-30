@@ -63,7 +63,9 @@ module cpu(
         .address_in(mem_addr),
         .mode(memory_mode),
         .data_in(mem_data_in),
-        .data_out(mem_data_out)        
+        .data_out(mem_data_out),
+        .peripheral_control_bus(peripheral_control_bus),
+        .peripheral_status_bus(peripheral_status_bus)        
     );    
     
     // Initialise ALU.
@@ -109,7 +111,7 @@ module cpu(
     always @(posedge clock) begin
         memory_state <= next_memory_state;
     end
-    assign mem_state_out = memory_state;
+    assign internal_state.memory_state = memory_state;
     
     logic [31:0] cmd;    
     // Hack to front-run storing of the command into the CMD register.

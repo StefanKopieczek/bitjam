@@ -15,7 +15,7 @@ module peripheral_manager(
     output logic [15:0] mono_leds,
     output color_led_pins_t left_rgb_led,
     output color_led_pins_t right_rgb_led
-    );    
+    );            
     
     logic [3:0] displayed_word_idx;
     initial displayed_word_idx = 0;
@@ -40,11 +40,24 @@ module peripheral_manager(
     
     assign mono_leds = cpu_state.pc[15:0];
     
+    logic [7:0] left_led_red;
+    logic [7:0] left_led_green;
+    logic [7:0] left_led_blue;
+    logic [7:0] right_led_red;
+    logic [7:0] right_led_green;
+    logic [7:0] right_led_blue;
+    assign left_led_red = cpu_state.cmd[31:28] == 4'd0 ? 8'h40 : 8'h0;
+    assign left_led_green = cpu_state.cmd[31:28] == 4'd1 ? 8'h40 : 8'h0;
+    assign left_led_blue = cpu_state.cmd[31:28] == 4'd2 ? 8'h40 : 8'h0;
+    assign right_led_red = cpu_state.memory_state == 4'd3 ? 8'h40 : 8'h0; // Writing
+    assign right_led_green = (cpu_state.memory_state == 4'd1 || cpu_state.memory_state == 4'd2) == 4'd1 ? 8'h40 : 8'h0; // Reading arg
+    assign right_led_blue = (cpu_state.memory_state == 4'd4 || cpu_state.memory_state == 4'd5) == 4'd2 ? 8'h40 : 8'h0; // Reading ptr
+    
     colour_led cmd_led (
         .clock_100mhz(clock_100mhz),
-        .red(cpu_state.cmd[31:28] == 4'd0),
-        .green(cpu_state.cmd[31:28] == 4'd1),
-        .blue(cpu_state.cmd[31:28] == 4'd2),
+        .red(left_led_red),
+        .green(left_led_green),
+        .blue(left_led_blue),
         .led_red(left_rgb_led.red),
         .led_green(left_rgb_led.green),
         .led_blue(left_rgb_led.blue)
@@ -52,9 +65,9 @@ module peripheral_manager(
     
     colour_led memory_led (
         .clock_100mhz(clock_100mhz),
-        .red(cpu_state.memory_state == 4'd3),                                      // Writing
-        .green(cpu_state.memory_state == 4'd1 || cpu_state.memory_state == 4'd2),  // Reading argument
-        .blue(cpu_state.memory_state == 4'd4 || cpu_state.memory_state == 4'd5),   // Reading pointer
+        .red(right_led_red),
+        .green(right_led_green), 
+        .blue(right_led_blue),
         .led_red(right_rgb_led.red),
         .led_green(right_rgb_led.green),
         .led_blue(right_rgb_led.blue)

@@ -56,7 +56,7 @@ module bitjam(
         .peripheral_status_bus(peripheral_status_bus)
     );
     
-    peripheral_manager peripheral_mamager (
+    peripheral_manager peripheral_manager (
         .clock_100mhz(CLK_100MHZ),        
         .buttons(buttons),
         .switches(SW),

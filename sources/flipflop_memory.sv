@@ -60,12 +60,13 @@ module flipflop_memory #(SIZE=80) (
             if (address_in < SIZE) begin
                 flipflops[address_in] <= data_in;
             end
-        end else if (mode == READ_MODE) begin
-            if (address_in < SIZE) begin
-                data_out = flipflops[address_in];
-            end else
-                data_out = 0;
-            end
         end
-        
+    end
+    
+    always_comb begin
+        if ((mode == READ_MODE) && (address_in < SIZE)) begin            
+            data_out = flipflops[address_in];
+        end else
+            data_out = 0;
+        end        
 endmodule
