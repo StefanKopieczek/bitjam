@@ -43,13 +43,13 @@ module bitjam(
     peripheral_status_bus_t peripheral_status_bus;    
     internal_state_bus_t cpu_internal_state;      
     
-    logic [150:0] clock_divider;
+    logic [4:0] clock_divider;
     always @(posedge CLK_100MHZ) begin
         clock_divider <= clock_divider + 15'b1;
     end
              
     cpu cpu (
-        .clock_100mhz(clock_divider[1 + SW[6:0]]),           
+        .clock_100mhz(clock_divider[4]),           
         .reset(~BTN_RES),        
         .internal_state(cpu_internal_state),
         .peripheral_control_bus(peripheral_control_bus),
@@ -66,8 +66,8 @@ module bitjam(
         .left_rgb_led(rgb_led_left),
         .right_rgb_led(rgb_led_right),
         .cpu_state(cpu_internal_state),
-        .peripheral_control_bus(peripheral_control_bus),
-        .peripheral_status_bus(peripheral_status_bus)                
+        .control_bus(peripheral_control_bus),
+        .status_bus(peripheral_status_bus)                
     );    
     
 endmodule

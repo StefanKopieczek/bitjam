@@ -14,15 +14,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
-      <ZoomEndTime time="59.651 ns"></ZoomEndTime>
-      <Cursor1Time time="2,631,870.000 ns"></Cursor1Time>
+      <ZoomStartTime time="210.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="370.346 ns"></ZoomEndTime>
+      <Cursor1Time time="1,646,785.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="248"></NameColumnWidth>
-      <ValueColumnWidth column_width="67"></ValueColumnWidth>
+      <NameColumnWidth column_width="266"></NameColumnWidth>
+      <ValueColumnWidth column_width="117"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="28" />
+   <WVObjectSize size="43" />
    <wvobject fp_name="/tf_cpu/cpu/clock_100mhz" type="logic">
       <obj_property name="ElementShortName">clock_100mhz</obj_property>
       <obj_property name="ObjectShortName">clock_100mhz</obj_property>
@@ -169,5 +169,66 @@
    <wvobject fp_name="/tf_cpu/cpu/mmu/flipflop_data_out" type="array">
       <obj_property name="ElementShortName">flipflop_data_out[31:0]</obj_property>
       <obj_property name="ObjectShortName">flipflop_data_out[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/load_arg_needs_literal" type="logic">
+      <obj_property name="ElementShortName">load_arg_needs_literal</obj_property>
+      <obj_property name="ObjectShortName">load_arg_needs_literal</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/load_arg_is_pointer" type="logic">
+      <obj_property name="ElementShortName">load_arg_is_pointer</obj_property>
+      <obj_property name="ObjectShortName">load_arg_is_pointer</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/load_dest_needs_literal" type="logic">
+      <obj_property name="ElementShortName">load_dest_needs_literal</obj_property>
+      <obj_property name="ObjectShortName">load_dest_needs_literal</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/load_dest_is_pointer" type="logic">
+      <obj_property name="ElementShortName">load_dest_is_pointer</obj_property>
+      <obj_property name="ObjectShortName">load_dest_is_pointer</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/load_arg" type="array">
+      <obj_property name="ElementShortName">load_arg[31:0]</obj_property>
+      <obj_property name="ObjectShortName">load_arg[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/load_mask_bits" type="array">
+      <obj_property name="ElementShortName">load_mask_bits[3:0]</obj_property>
+      <obj_property name="ObjectShortName">load_mask_bits[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/load_mask" type="array">
+      <obj_property name="ElementShortName">load_mask[31:0]</obj_property>
+      <obj_property name="ObjectShortName">load_mask[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/load_is_right_shift" type="logic">
+      <obj_property name="ElementShortName">load_is_right_shift</obj_property>
+      <obj_property name="ObjectShortName">load_is_right_shift</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/load_shift" type="array">
+      <obj_property name="ElementShortName">load_shift[5:0]</obj_property>
+      <obj_property name="ObjectShortName">load_shift[5:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/load_arg_adjusted" type="array">
+      <obj_property name="ElementShortName">load_arg_adjusted[31:0]</obj_property>
+      <obj_property name="ObjectShortName">load_arg_adjusted[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/load_mask_shifted" type="array">
+      <obj_property name="ElementShortName">load_mask_shifted[31:0]</obj_property>
+      <obj_property name="ObjectShortName">load_mask_shifted[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/load_preserves_dest_bits" type="logic">
+      <obj_property name="ElementShortName">load_preserves_dest_bits</obj_property>
+      <obj_property name="ObjectShortName">load_preserves_dest_bits</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/load_dest_old_value" type="array">
+      <obj_property name="ElementShortName">load_dest_old_value[31:0]</obj_property>
+      <obj_property name="ObjectShortName">load_dest_old_value[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/load_final_value" type="array">
+      <obj_property name="ElementShortName">load_final_value[31:0]</obj_property>
+      <obj_property name="ObjectShortName">load_final_value[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tf_cpu/cpu/test" type="array">
+      <obj_property name="ElementShortName">test[31:0]</obj_property>
+      <obj_property name="ObjectShortName">test[31:0]</obj_property>
    </wvobject>
 </wave_config>

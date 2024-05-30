@@ -159,7 +159,8 @@ module cpu(
     logic [31:0] load_arg;
     logic [3:0] load_mask_bits;
     logic [31:0] load_mask;
-    logic [2:0] load_shift;
+    logic load_is_right_shift;
+    logic [5:0] load_shift;
     logic [31:0] load_arg_adjusted;
     logic [31:0] load_mask_shifted;
     logic load_preserves_dest_bits;
@@ -175,9 +176,17 @@ module cpu(
             : registers[source_register_from_cmd];
     assign load_mask_bits = cmd[17:14];
     assign load_mask = { {8{load_mask_bits[3]}}, {8{load_mask_bits[2]}}, {8{load_mask_bits[1]}}, {8{load_mask_bits[0]}} };
-    assign load_shift = cmd[13:11];
-    assign load_arg_adjusted = (load_arg & load_mask) << (8 * $signed(load_shift));
-    assign load_mask_shifted = load_mask << (8 * $signed(load_shift));
+    assign load_is_right_shift = cmd[13];
+    assign load_shift = load_is_right_shift ? ((~cmd[12:11] & 2'b11) + 1'b1) << 3 : (cmd[12:11] & 2'b11) << 3;
+    always_comb begin
+        if (load_is_right_shift == 1'b1) begin
+            load_arg_adjusted = (load_arg & load_mask) >> load_shift;
+            load_mask_shifted = load_mask >> load_shift;
+        end else begin
+            load_arg_adjusted = (load_arg & load_mask) << load_shift;
+            load_mask_shifted = load_mask << load_shift; 
+        end        
+    end
     assign load_preserves_dest_bits = cmd[10];
     assign load_dest_old_value = (load_dest_is_pointer) ? registers[TMP3] : registers[target_register_from_cmd];
     assign load_final_value = load_preserves_dest_bits 

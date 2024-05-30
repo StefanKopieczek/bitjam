@@ -18,6 +18,16 @@ module memory_mapped_peripherals (
     peripheral_control_bus_t control_state;
     assign peripheral_control_bus = control_state;
     
+    // Initialize control bus
+    initial begin
+        control_state.display_control = 0;
+        control_state.sevenseg_data = 64'h0;
+        control_state.mono_led_data = 16'h0;
+        control_state.color_led_data[0] = 0;
+        control_state.color_led_data[1] = 0;
+    end
+    
+    // Write path
     always @(posedge clock) begin
         if (mode == WRITE_MODE) begin
              if (address_in == 32'h20) control_state.display_control <= data_in;
@@ -29,6 +39,7 @@ module memory_mapped_peripherals (
         end
      end
      
+     // Read path
      always_comb begin
          if (mode == READ_MODE) begin
              if (address_in == 32'h20) data_out = control_state.display_control;

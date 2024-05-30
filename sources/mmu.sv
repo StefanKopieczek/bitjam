@@ -18,7 +18,7 @@ module mmu (
     localparam int PERIPHERAL_START = 'h0;
     localparam int PERIPHERAL_END = 'h4f;
     localparam int FLIPFLOP_START = PERIPHERAL_END + 1;
-    localparam int FLIPFLOP_END = 'hff;
+    localparam int FLIPFLOP_END = 'hfff;
     
     logic use_peripherals;
     assign use_peripherals = (address_in >= PERIPHERAL_START) && (address_in <= PERIPHERAL_END);

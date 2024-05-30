@@ -20,9 +20,9 @@ package peripherals;
         logic [31:0] color_led_data[1:0];            
     } peripheral_control_bus_t;       
         
-    typedef struct packed {
-        logic [15:0] switch_state;
+    typedef struct packed {        
         buttons_t button_state;
+        logic [15:0] switch_state;
     } peripheral_status_bus_t;
 endpackage
 
