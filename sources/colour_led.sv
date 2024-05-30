@@ -1,13 +1,13 @@
 `timescale 1ns / 1ps
 
+import color::*;
+
 module colour_led(
     input wire clock_100mhz,
-    input logic[7:0] red,
-    input logic[7:0] green,
-    input logic[7:0] blue,
-    output logic led_red,
-    output logic led_green,
-    output logic led_blue
+    input color_t color,
+    output logic red_enable,
+    output logic green_enable,
+    output logic blue_enable
     );
     
     logic [20:0] clock_divider;
@@ -18,8 +18,8 @@ module colour_led(
     assign clock = clock_divider[10];
     
     always @(posedge clock) begin
-        led_red <= (clock_divider[18:11] <= red);
-        led_green <= (clock_divider[18:11] <= green);
-        led_blue <= (clock_divider[18:11] <= blue);
+        red_enable <= (clock_divider[18:11] <= color.red);
+        green_enable <= (clock_divider[18:11] <= color.green);
+        blue_enable <= (clock_divider[18:11] <= color.blue);
     end
 endmodule

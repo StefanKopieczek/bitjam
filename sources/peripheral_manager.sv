@@ -1,5 +1,6 @@
 `timescale 1ns / 1ps
 
+import color::*;
 import internal_state::*;
 import peripherals::*; 
 
@@ -40,36 +41,29 @@ module peripheral_manager(
     
     assign mono_leds = cpu_state.pc[15:0];
     
-    logic [7:0] left_led_red;
-    logic [7:0] left_led_green;
-    logic [7:0] left_led_blue;
-    logic [7:0] right_led_red;
-    logic [7:0] right_led_green;
-    logic [7:0] right_led_blue;
-    assign left_led_red = cpu_state.cmd[31:28] == 4'd0 ? 8'h40 : 8'h0;
-    assign left_led_green = cpu_state.cmd[31:28] == 4'd1 ? 8'h40 : 8'h0;
-    assign left_led_blue = cpu_state.cmd[31:28] == 4'd2 ? 8'h40 : 8'h0;
-    assign right_led_red = cpu_state.memory_state == 4'd3 ? 8'h40 : 8'h0; // Writing
-    assign right_led_green = (cpu_state.memory_state == 4'd1 || cpu_state.memory_state == 4'd2) == 4'd1 ? 8'h40 : 8'h0; // Reading arg
-    assign right_led_blue = (cpu_state.memory_state == 4'd4 || cpu_state.memory_state == 4'd5) == 4'd2 ? 8'h40 : 8'h0; // Reading ptr
+    color_t left_led;
+    assign left_led.red = cpu_state.cmd[31:28] == 4'd0 ? 8'h40 : 8'h0;
+    assign left_led.green = cpu_state.cmd[31:28] == 4'd1 ? 8'h40 : 8'h0;
+    assign left_led.blue = cpu_state.cmd[31:28] == 4'd2 ? 8'h40 : 8'h0;
     
     colour_led cmd_led (
         .clock_100mhz(clock_100mhz),
-        .red(left_led_red),
-        .green(left_led_green),
-        .blue(left_led_blue),
-        .led_red(left_rgb_led.red),
-        .led_green(left_rgb_led.green),
-        .led_blue(left_rgb_led.blue)
+        .color(left_led),
+        .red_enable(left_rgb_led.red),
+        .green_enable(left_rgb_led.green),
+        .blue_enable(left_rgb_led.blue)
     );
+    
+    color_t right_led;
+    assign right_led.red = cpu_state.memory_state == 4'd3 ? 8'h40 : 8'h0; // Writing
+    assign right_led.green = (cpu_state.memory_state == 4'd1 || cpu_state.memory_state == 4'd2) == 4'd1 ? 8'h40 : 8'h0; // Reading arg
+    assign right_led.blue = (cpu_state.memory_state == 4'd4 || cpu_state.memory_state == 4'd5) == 4'd2 ? 8'h40 : 8'h0; // Reading ptr
     
     colour_led memory_led (
         .clock_100mhz(clock_100mhz),
-        .red(right_led_red),
-        .green(right_led_green), 
-        .blue(right_led_blue),
-        .led_red(right_rgb_led.red),
-        .led_green(right_rgb_led.green),
-        .led_blue(right_rgb_led.blue)
+        .color(right_led),
+        .red_enable(right_rgb_led.red),
+        .green_enable(right_rgb_led.green),
+        .blue_enable(right_rgb_led.blue)
     );
 endmodule
